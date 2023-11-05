@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://1tcc3oa27s0h"]
+
+[ext_resource type="Script" path="res://prototypes/top-down-defence/Stage.gd" id="1_dphfa"]
+[ext_resource type="NavigationPolygon" uid="uid://l3gll65kmk7p" path="res://prototypes/top-down-defence/top-down-rect.tres" id="2_yce3h"]
+[ext_resource type="Script" path="res://prototypes/top-down-defence/Tower.gd" id="3_n80x4"]
+[ext_resource type="Texture2D" uid="uid://b7bps6a7r0cr7" path="res://icon.svg" id="4_28v4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1ebb"]
+size = Vector2(128, 128)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Stage1" type="TileMap" parent="."]
+format = 2
+script = ExtResource("1_dphfa")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Stage1"]
+visible = false
+rotation = -0.0036552
+navigation_polygon = ExtResource("2_yce3h")
+
+[node name="Timer" type="Timer" parent="Stage1"]
+autostart = true
+
+[node name="Tower" type="RigidBody2D" parent="."]
+position = Vector2(80, 320)
+collision_layer = 4
+collision_mask = 6
+mass = 23.19
+gravity_scale = 2.66454e-15
+script = ExtResource("3_n80x4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+shape = SubResource("RectangleShape2D_l1ebb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tower"]
+texture = ExtResource("4_28v4l")
+
+[node name="Timer" type="Timer" parent="Tower"]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Stage1/Timer" to="Stage1" method="_on_timer_timeout"]
+[connection signal="timeout" from="Tower/Timer" to="Tower" method="_on_timer_timeout"]
