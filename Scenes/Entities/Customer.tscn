@@ -18,8 +18,18 @@ position = Vector2(0.75, 0)
 shape = SubResource("RectangleShape2D_ljp2y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Body"]
-position = Vector2(0.749992, -0.250006)
-scale = Vector2(0.217105, 0.25625)
+position = Vector2(0.749992, -1.25001)
+scale = Vector2(0.217105, 0.23125)
+texture = ExtResource("1_3ugqr")
+
+[node name="Leg" type="Sprite2D" parent="Body/Sprite2D"]
+position = Vector2(-21.5984, 45.0202)
+scale = Vector2(0.113837, 0.0907108)
+texture = ExtResource("1_3ugqr")
+
+[node name="Leg2" type="Sprite2D" parent="Body/Sprite2D"]
+position = Vector2(24.462, 45.0203)
+scale = Vector2(0.113837, 0.0907108)
 texture = ExtResource("1_3ugqr")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Body"]
