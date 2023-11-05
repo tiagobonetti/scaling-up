@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnokargsmju28"]
+
+[ext_resource type="Texture2D" uid="uid://dhmnhjm67x37u" path="res://Environments/lever_right.png" id="1_fstiq"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8hh4x"]
+points = PackedVector2Array(-6, -2.41, -6, 4.445, 1, 7, 7.5, 4.005, 7.515, -2.62, 0.795, -6.34)
+
+[node name="Product" type="RigidBody2D"]
+mass = 160.58
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_8hh4x")
+
+[node name="LeverRight" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource("1_fstiq")

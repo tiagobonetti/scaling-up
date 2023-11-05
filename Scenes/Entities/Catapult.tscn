@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://chw6ie62f0gpe"]
+
+[ext_resource type="Script" path="res://Scripts/catapult.gd" id="1_cfnwn"]
+[ext_resource type="Texture2D" uid="uid://cuwfqeff5wg8t" path="res://Environments/lever_left.png" id="2_xrxw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k56c4"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_cfnwn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_xrxw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k56c4")
+
+[connection signal="input_event" from="." to="." method="_begin_drag"]
