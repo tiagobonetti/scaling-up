@@ -1,19 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://5e0bkqxqc7uf"]
+[gd_scene load_steps=6 format=3 uid="uid://5e0bkqxqc7uf"]
 
 [ext_resource type="PackedScene" uid="uid://cpl8fe1144l2g" path="res://Scenes/Entities/Customer.tscn" id="1_l5qhl"]
 [ext_resource type="Texture2D" uid="uid://b1wlxtriobsas" path="res://Textures/empty.png" id="2_ul11c"]
+[ext_resource type="PackedScene" uid="uid://bnokargsmju28" path="res://Scenes/Entities/Product.tscn" id="3_rwt1p"]
+[ext_resource type="PackedScene" uid="uid://chw6ie62f0gpe" path="res://Scenes/Entities/Catapult.tscn" id="4_om0c5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulc13"]
 size = Vector2(1276.5, 87.75)
 
 [node name="stage" type="Node2D"]
-
-[node name="Customer" parent="." instance=ExtResource("1_l5qhl")]
-position = Vector2(531, 528)
-
-[node name="Customer" parent="Customer" instance=ExtResource("1_l5qhl")]
-position = Vector2(5, -129)
-scale = Vector2(1.3, 1.3)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -27,3 +22,38 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 position = Vector2(638.5, 601)
 scale = Vector2(16.9342, 1.125)
 texture = ExtResource("2_ul11c")
+
+[node name="Product" parent="." instance=ExtResource("3_rwt1p")]
+position = Vector2(533, 254)
+
+[node name="Customer" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(526, 531)
+
+[node name="Customer2" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(484, 543)
+scale = Vector2(0.8, 0.8)
+
+[node name="Customer3" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(1062, 1056)
+
+[node name="Customer4" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(1672, 1506)
+scale = Vector2(1.3, 1.3)
+
+[node name="Customer5" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(576, 542)
+scale = Vector2(1.3, 1.3)
+
+[node name="Customer6" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(631, 540)
+
+[node name="Customer7" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(602, 542)
+scale = Vector2(0.8, 0.8)
+
+[node name="Customer8" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(664, 539)
+scale = Vector2(1.3, 1.3)
+
+[node name="Catapult" parent="." instance=ExtResource("4_om0c5")]
+position = Vector2(280, 546)

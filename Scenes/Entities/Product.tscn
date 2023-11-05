@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnokargsmju28"]
+
+[ext_resource type="Texture2D" uid="uid://nqw3u5a27plt" path="res://Textures/gift_box.png" id="1_8n5gd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is3g1"]
+
+[node name="Product" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 160.58
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.0195312, 0.0195312)
+texture = ExtResource("1_8n5gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_is3g1")
