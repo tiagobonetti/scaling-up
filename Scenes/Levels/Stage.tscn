@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://5e0bkqxqc7uf"]
+
+[ext_resource type="PackedScene" uid="uid://cpl8fe1144l2g" path="res://Scenes/Entities/Customer.tscn" id="1_l5qhl"]
+[ext_resource type="Texture2D" uid="uid://b1wlxtriobsas" path="res://Textures/empty.png" id="2_ul11c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ulc13"]
+size = Vector2(1276.5, 87.75)
+
+[node name="stage" type="Node2D"]
+
+[node name="Customer" parent="." instance=ExtResource("1_l5qhl")]
+position = Vector2(531, 528)
+
+[node name="Customer" parent="Customer" instance=ExtResource("1_l5qhl")]
+position = Vector2(5, -129)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(633, 600)
+shape = SubResource("RectangleShape2D_ulc13")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(638.5, 601)
+scale = Vector2(16.9342, 1.125)
+texture = ExtResource("2_ul11c")
