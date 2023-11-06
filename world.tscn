@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxcvon26drnqe"]
+[gd_scene load_steps=11 format=3 uid="uid://cxcvon26drnqe"]
 
 [ext_resource type="Texture2D" uid="uid://cuwfqeff5wg8t" path="res://Environments/lever_left.png" id="1_4gmcu"]
 [ext_resource type="Script" path="res://Player.gd" id="2_wa028"]
@@ -82,15 +82,15 @@ _data = {
 "RunRight": SubResource("Animation_lyp70")
 }
 
-[node name="World" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e78jn"]
+radius = 4.12311
 
-[node name="LeverLeft" type="Sprite2D" parent="."]
-position = Vector2(16, 8)
-texture = ExtResource("1_4gmcu")
+[node name="World" type="Node2D"]
 
 [node name="Player" type="StaticBody2D" parent="."]
 position = Vector2(67, 30)
 script = ExtResource("2_wa028")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("3_ahwai")
@@ -106,3 +106,14 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_owx5r")
 }
+
+[node name="Lever" type="StaticBody2D" parent="."]
+position = Vector2(94, 51)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lever"]
+texture = ExtResource("1_4gmcu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lever"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_e78jn")
