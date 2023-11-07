@@ -4,3 +4,4 @@
 vertices = PackedVector2Array(0, 0, 1151.99, 4.21078, 1149.65, 644.206, -2.33932, 639.996)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1151.99, 4.21078, 1149.65, 644.206, -2.33932, 639.996)])
+cell_size = 16.0

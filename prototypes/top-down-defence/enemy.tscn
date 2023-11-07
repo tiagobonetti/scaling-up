@@ -20,3 +20,6 @@ shape = SubResource("RectangleShape2D_ug5i3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_p6hvx")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true

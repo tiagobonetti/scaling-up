@@ -1,26 +1,28 @@
 extends Node2D
+class_name Tower
 
-var bullet_scene = load("res://prototypes/top-down-defence/bullet.tscn")
+@export var bullet_wait_time: float = 0.3
 
-func closest_enemy(acc, enemy):
-	var enemy_distance = (global_position - enemy.global_position).length()
-	return [enemy, enemy_distance] if enemy_distance < acc[1] else acc
+@onready var bullet_scene = load("res://prototypes/top-down-defence/bullet.tscn")
+@onready var timer: Timer = get_node("Timer")
 
-func find_closest_enemy():
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	var closest = enemies.reduce(closest_enemy, [null, INF])
-	return closest[0]
+func _ready():
+	add_to_group("towers")
+	timer.wait_time = bullet_wait_time
+	timer.connect("timeout", Callable(_on_timer_timeout))
+	timer.start()
 
+func find_closest_enemy() -> Enemy:
+	return Utils.find_closest(self, "enemies")
+
+func shoot(enemy: Enemy):
+	var bullet = bullet_scene.instantiate()
+	add_child(bullet)
+	bullet.target_enemy(enemy)
 
 func _on_timer_timeout():
 	var enemy = find_closest_enemy()
-	if not enemy:
-		print("No enemy found!")
-		return
+	if enemy:
+		shoot(enemy)
 	
-	var bullet = bullet_scene.instantiate()
-	add_child(bullet)
-	print(bullet)
-	bullet.target_enemy(enemy)
-
 
