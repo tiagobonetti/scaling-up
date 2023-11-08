@@ -19,7 +19,7 @@ func spawn_enemy():
 	var enemy: Enemy = enemy_scene.instantiate()
 	add_child(enemy)
 	print("Enemy spawned")
-	enemy.position = Vector2(randf_range(200, 960), randf_range(40, 600))
+	enemy.position = Vector2(randf_range(700, 960), randf_range(40, 600))
 	enemy.attack_closest()
 
 func try_finish():

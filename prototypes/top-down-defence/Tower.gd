@@ -24,5 +24,3 @@ func _on_timer_timeout():
 	var enemy = find_closest_enemy()
 	if enemy:
 		shoot(enemy)
-	
-
