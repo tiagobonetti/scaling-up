@@ -1,5 +1,5 @@
 extends Polygon2D
-class_name WallP
+class_name Wall
 
 @onready var body := StaticBody2D.new()
 @onready var collision := CollisionPolygon2D.new()

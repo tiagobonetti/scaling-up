@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cby8s1sjxw5dp"]
+
+[ext_resource type="Script" path="res://prototypes/top-down-defence/Wall.gd" id="1_kjt1a"]
+
+[node name="Wall" type="Polygon2D"]
+position = Vector2(376, 91)
+polygon = PackedVector2Array(-50, -50, -50, 50, 50, 50, 50, -50)
+script = ExtResource("1_kjt1a")

@@ -11,7 +11,8 @@ func target_enemy(enemy: Enemy):
 func _on_body_entered(body):
 	if body.has_method("apply_damage"):
 		body.apply_damage(damage)
-		queue_free()
+	
+	queue_free()
 
 func _on_timer_timeout():
 	queue_free()

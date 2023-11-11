@@ -4,10 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b7bps6a7r0cr7" path="res://icon.svg" id="2_p6hvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ug5i3"]
-size = Vector2(128, 128)
+size = Vector2(64, 64)
 
 [node name="Enemy" type="RigidBody2D"]
-position = Vector2(1025, 363)
 collision_layer = 2
 collision_mask = 6
 gravity_scale = 2.66454e-15
@@ -19,7 +18,12 @@ script = ExtResource("1_bv2gt")
 shape = SubResource("RectangleShape2D_ug5i3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_p6hvx")
+flip_v = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+radius = 100.0
+debug_enabled = true

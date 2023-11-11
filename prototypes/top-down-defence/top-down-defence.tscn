@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://1tcc3oa27s0h"]
+[gd_scene load_steps=5 format=3 uid="uid://1tcc3oa27s0h"]
 
 [ext_resource type="Script" path="res://prototypes/top-down-defence/Stage.gd" id="1_dphfa"]
 [ext_resource type="NavigationPolygon" uid="uid://l3gll65kmk7p" path="res://prototypes/top-down-defence/top-down-rect.tres" id="2_yce3h"]
-[ext_resource type="Script" path="res://prototypes/top-down-defence/Wall.gd" id="3_0sdd3"]
-[ext_resource type="Script" path="res://prototypes/top-down-defence/StageArea.gd" id="3_h45l3"]
 [ext_resource type="PackedScene" uid="uid://c50uwoeg4rdit" path="res://prototypes/top-down-defence/tower.tscn" id="3_qk6ib"]
+[ext_resource type="PackedScene" uid="uid://cby8s1sjxw5dp" path="res://prototypes/top-down-defence/wall.tscn" id="4_568fp"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,20 +12,9 @@ format = 2
 script = ExtResource("1_dphfa")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Stage1"]
-position = Vector2(5.91106e-09, 0)
+position = Vector2(-1, -4)
 rotation = -0.0036552
 navigation_polygon = ExtResource("2_yce3h")
-script = ExtResource("3_h45l3")
-
-[node name="Wall" type="Polygon2D" parent="Stage1/NavigationRegion2D"]
-position = Vector2(437.921, 569.604)
-polygon = PackedVector2Array(-70.9468, -288.261, 40.6138, -167.853, 47.7365, 72.175, -40.2629, 71.8533)
-script = ExtResource("3_0sdd3")
-
-[node name="Wall2" type="Polygon2D" parent="Stage1/NavigationRegion2D"]
-position = Vector2(599.44, 154.192)
-polygon = PackedVector2Array(-63.4148, -160.233, 40.5845, -159.853, 47.7657, 64.175, -55.7657, -64.2043)
-script = ExtResource("3_0sdd3")
 
 [node name="Timer" type="Timer" parent="Stage1"]
 
@@ -35,3 +23,11 @@ position = Vector2(104, 192)
 
 [node name="Tower2" parent="Stage1" instance=ExtResource("3_qk6ib")]
 position = Vector2(104, 448)
+
+[node name="Wall" parent="Stage1" instance=ExtResource("4_568fp")]
+position = Vector2(280, 2.08165e-12)
+polygon = PackedVector2Array(0, -2.08165e-12, 40, 192, 168, 256, 128, -2.08165e-12)
+
+[node name="Wall2" parent="Stage1" instance=ExtResource("4_568fp")]
+position = Vector2(648, 416)
+polygon = PackedVector2Array(56, -160, -232, 232, -48, 232, 136, -112)
