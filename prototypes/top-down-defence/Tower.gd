@@ -18,7 +18,7 @@ func find_closest_enemy() -> Enemy:
 func shoot(enemy: Enemy):
 	var bullet = bullet_scene.instantiate()
 	add_child(bullet)
-	bullet.target_enemy(enemy)
+	bullet.shot(self, enemy)
 
 func _on_timer_timeout():
 	var enemy = find_closest_enemy()
