@@ -24,21 +24,6 @@ func _process(_delta):
 		queue_redraw()
 
 
-# Constraints
-# => Flight should be parabolic.
-# => Start and endpoint are given.
-# => Catapult uses v0 to determine distance.
-# 
-# # Parabolic flight:
-# r = r0 + v0 * t * cos(theta)
-# z = z0 + v0 * t * sin(theta) - 0.5 * g * t^2
-# 
-# Hence total time of flight:
-# t = 2 * v0 * sin(theta) / g
-# 
-# Fill in total time:
-# r1 = r0 + 2 * v0 * v0 * sin(theta) * cos(theta) / g
-
 func _draw():
 	if is_dragging:		
 		var perspective_factor = 0.8
