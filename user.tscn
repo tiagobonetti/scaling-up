@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dbtplpeewat72"]
 
-[ext_resource type="Texture2D" path="res://Sprites/user.png" id="1_j3r1m"]
+[ext_resource type="Texture2D" uid="uid://dxw5ufjsjf66k" path="res://Sprites/user.png" id="1_j3r1m"]
 [ext_resource type="Script" path="res://user.gd" id="1_tljtw"]
 [ext_resource type="Script" path="res://WanderController.gd" id="2_20o01"]
 
