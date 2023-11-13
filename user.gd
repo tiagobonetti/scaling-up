@@ -28,13 +28,14 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-v@onready
-match state:
-	IDLE:
-		pass
-	WANDER:
-		pass
+##@onready var state_list = IDLE, WANDER
 
-func pick_random_state(state_list):
-	state_list.shuffle()
-	return state_list.pop_front()
+#match state:
+#	IDLE:
+#		pass
+#	WANDER:
+#		pass
+#
+#func pick_random_state(state_list):
+#	state_list.shuffle()
+#	return state_list.pop_front()
