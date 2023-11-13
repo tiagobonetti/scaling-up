@@ -1,20 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://1tcc3oa27s0h"]
 
-[ext_resource type="Script" path="res://prototypes/top-down-defence/Stage.gd" id="1_dphfa"]
 [ext_resource type="NavigationPolygon" uid="uid://l3gll65kmk7p" path="res://prototypes/top-down-defence/top-down-rect.tres" id="2_yce3h"]
 [ext_resource type="PackedScene" uid="uid://c50uwoeg4rdit" path="res://prototypes/top-down-defence/tower.tscn" id="3_qk6ib"]
 [ext_resource type="PackedScene" uid="uid://cby8s1sjxw5dp" path="res://prototypes/top-down-defence/wall.tscn" id="4_568fp"]
+[ext_resource type="PackedScene" uid="uid://vloxp7n1phxg" path="res://enemy_spawner.tscn" id="4_tbj3e"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Stage1" type="TileMap" parent="."]
 format = 2
-script = ExtResource("1_dphfa")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Stage1"]
-position = Vector2(-1, -4)
-rotation = -0.0036552
 navigation_polygon = ExtResource("2_yce3h")
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="Stage1"]
 
@@ -31,3 +29,11 @@ polygon = PackedVector2Array(0, -2.08165e-12, 40, 192, 168, 256, 128, -2.08165e-
 [node name="Wall2" parent="Stage1" instance=ExtResource("4_568fp")]
 position = Vector2(648, 416)
 polygon = PackedVector2Array(56, -160, -232, 232, -48, 232, 136, -112)
+
+[node name="EnemySpawner" parent="Stage1" instance=ExtResource("4_tbj3e")]
+position = Vector2(792, 40)
+enemy_pool_sizes = [1, 2, 2, 4, 5]
+
+[node name="EnemySpawner2" parent="Stage1" instance=ExtResource("4_tbj3e")]
+position = Vector2(968, 536)
+enemy_pool_sizes = [1, 2, 3, 4, 7]
