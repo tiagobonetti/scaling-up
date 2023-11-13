@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dbtplpeewat72"]
 
-[ext_resource type="Texture2D" uid="uid://dxw5ufjsjf66k" path="res://Sprites/user.png" id="1_j3r1m"]
 [ext_resource type="Script" path="res://user.gd" id="1_tljtw"]
+[ext_resource type="Texture2D" uid="uid://dxw5ufjsjf66k" path="res://Sprites/user.png" id="2_4yuwm"]
 [ext_resource type="Script" path="res://WanderController.gd" id="2_20o01"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njoxk"]
@@ -68,7 +68,7 @@ _data = {
 script = ExtResource("1_tljtw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_j3r1m")
+texture = ExtResource("2_4yuwm")
 hframes = 9
 frame = 1
 
