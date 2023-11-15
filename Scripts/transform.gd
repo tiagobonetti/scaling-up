@@ -1,11 +1,13 @@
 extends Node
 
 
+const PERSPECTIVE_FACTOR = 0.8
+
+
 static func faux_3d(xyz):
 	var xy = xyz[0]
 	var z = xyz[1]
-	var perspective_factor = 0.8
-	return xy - Vector2(0, perspective_factor * z)
+	return xy - Vector2(0, PERSPECTIVE_FACTOR * z)
 
 
 # Called when the node enters the scene tree for the first time.
