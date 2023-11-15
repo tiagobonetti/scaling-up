@@ -15,6 +15,8 @@
 # (r1 - r0) * g = v0 * v0 * sin(2 * theta)
 # v0 = sqrt((r1 - r0) * g / sin(2 * theta))
 
+const GRAVITY = 981
+
 var v0: float
 var total_time: float
 var start_position: Vector2
@@ -24,7 +26,7 @@ var gravity: float
 
 
 # Maybe gravity should be some global state?
-func _init(start_position, v0, ground_angle, theta=deg_to_rad(72), gravity=9.81):
+func _init(start_position, v0, ground_angle, theta=deg_to_rad(72), gravity=GRAVITY):
 	self.v0 = max(v0, 0.01)  # Prevent div by zero
 	self.total_time = 2.0 * v0 * sin(theta) / gravity
 	self.start_position = start_position
@@ -32,7 +34,7 @@ func _init(start_position, v0, ground_angle, theta=deg_to_rad(72), gravity=9.81)
 	self.theta = theta
 	self.gravity = gravity
 
-func target_position(from_position, to_position, theta=deg_to_rad(72), gravity=9.81):
+func target_position(from_position, to_position, theta=deg_to_rad(72), gravity=GRAVITY):
 	var v0 = sqrt((to_position - from_position) * gravity / sin(2 * theta))
 	var ground_angle = atan2(to_position[1] - from_position[1], to_position[0] - from_position[0])
 	
@@ -50,7 +52,6 @@ func final_position():
 
 func trajectory(num_steps):
 	return Iterator.new(self, num_steps)
-
 
 class Iterator:
 	var _parent

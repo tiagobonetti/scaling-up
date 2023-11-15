@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://chw6ie62f0gpe"]
+[gd_scene load_steps=4 format=3 uid="uid://47fibceb80ku"]
 
 [ext_resource type="Script" path="res://Scripts/catapult.gd" id="1_cfnwn"]
 [ext_resource type="Texture2D" uid="uid://cuwfqeff5wg8t" path="res://Environments/lever_left.png" id="2_xrxw5"]

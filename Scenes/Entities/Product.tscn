@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnokargsmju28"]
+[gd_scene load_steps=4 format=3 uid="uid://i5coa7tq7tkk"]
 
 [ext_resource type="Texture2D" uid="uid://dhmnhjm67x37u" path="res://Environments/lever_right.png" id="1_fstiq"]
 [ext_resource type="Script" path="res://Scripts/product.gd" id="1_nwbf5"]
@@ -6,7 +6,7 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8hh4x"]
 points = PackedVector2Array(-6, -2.41, -6, 4.445, 1, 7, 7.5, 4.005, 7.515, -2.62, 0.795, -6.34)
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D2" type="Area2D"]
 script = ExtResource("1_nwbf5")
 
 [node name="LeverRight" type="Sprite2D" parent="."]
