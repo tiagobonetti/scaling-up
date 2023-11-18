@@ -1,11 +1,16 @@
-extends RigidBody2D
+extends StaticBody2D
 
+var animationPlayer = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	animationPlayer = $AnimationPlayer
+	
+	if animationPlayer != null:
+		animationPlayer.play("Charge")
+	else:
+		pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+

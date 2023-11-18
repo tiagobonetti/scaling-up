@@ -121,15 +121,18 @@ texture = ExtResource("1_4gmcu")
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_e78jn")
 
-[node name="Catapult" parent="." instance=ExtResource("4_qplka")]
-position = Vector2(110, 96)
+[node name="Product" parent="." instance=ExtResource("6_ask0n")]
+position = Vector2(124, 81)
 mass = 0.01
 gravity_scale = 2.66454e-15
 
-[node name="Hit" parent="." instance=ExtResource("5_7ipxa")]
-position = Vector2(223, 146)
+[node name="Catapult" parent="." instance=ExtResource("4_qplka")]
+position = Vector2(110, 96)
 
-[node name="Product" parent="." instance=ExtResource("6_ask0n")]
-position = Vector2(192, 110)
+[node name="Hit" parent="." instance=ExtResource("5_7ipxa")]
+position = Vector2(257, 134)
+
+[node name="Product2" parent="." instance=ExtResource("6_ask0n")]
+position = Vector2(205, 91)
 mass = 0.01
 gravity_scale = 2.66454e-15
