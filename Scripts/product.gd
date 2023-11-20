@@ -19,7 +19,7 @@ func _process(delta):
 		if m_time < m_arc.total_time:
 			var xyz = m_arc.position_at(m_time)
 			position = Transform.faux_3d(xyz)
-			var size_factor = 1.0 / (1.0 - 0.005 * xyz[1])
+			var size_factor = 1.0 / (1.0 - min(0.5, 0.005 * xyz[1]))  # Cap scale to not get unreasonably big ball
 			scale = Vector2(size_factor, size_factor)
 			get_node("Shadow").scale = Vector2(0.3 / (7.0 + 0.1 * xyz[1]), 0.03 / (2.0 + 0.1 * xyz[1]))
 			get_node("Shadow").position = Vector2(0, 3 + Transform.PERSPECTIVE_FACTOR * xyz[1] / size_factor)

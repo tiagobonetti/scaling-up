@@ -85,5 +85,5 @@ func _input(event):
 		launched_product.follow_arc(create_arc())
 
 	if is_dragging and event is InputEventMouseMotion:
-		current_position = event.position
+		current_position = current_position + 10 * event.relative
 		redraw = debug_drawing
