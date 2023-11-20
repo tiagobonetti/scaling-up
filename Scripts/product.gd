@@ -14,16 +14,21 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	m_time += delta
-	if m_arc and (m_time < m_arc.total_time):
-		var xyz = m_arc.position_at(m_time)
-		position = Transform.faux_3d(xyz)
-		scale = Vector2(1.0 / (1.0 - 0.005 * xyz[1]), 1.0 / (1.0 - 0.005 * xyz[1]))
-		get_node("Shadow").scale = Vector2(0.7 / (10.0 + xyz[1]), 0.07 / (3.0 + xyz[1]))
-		get_node("Shadow").position = Vector2(-1.4, 6.125 + Transform.PERSPECTIVE_FACTOR * xyz[1])
+	if m_arc:
+		if m_time < m_arc.total_time:
+			var xyz = m_arc.position_at(m_time)
+			position = Transform.faux_3d(xyz)
+			var size_factor = 1.0 / (1.0 - 0.005 * xyz[1])
+			scale = Vector2(size_factor, size_factor)
+			get_node("Shadow").scale = Vector2(0.3 / (7.0 + 0.1 * xyz[1]), 0.03 / (2.0 + 0.1 * xyz[1]))
+			get_node("Shadow").position = Vector2(0, 3 + Transform.PERSPECTIVE_FACTOR * xyz[1] / size_factor)
+		else:
+			pass
+		
 
 
 func follow_arc(arc):
 	m_arc = arc
 	m_time = 0
 	position = Transform.faux_3d(m_arc.position_at(0))
-	get_node("Shadow").position = Vector2(-1.25, 6.125 + m_arc.position_at(0)[1])
+	get_node("Shadow").position = Vector2(0, 3 + m_arc.position_at(0)[1])
