@@ -2,6 +2,7 @@ extends Area2D
 
 
 var Transform = preload("res://Scripts/transform.gd")
+var Explosion = preload("res://Scenes/Entities/Explosion.tscn")
 var m_arc
 var m_time
 
@@ -23,8 +24,10 @@ func _process(delta):
 			get_node("Shadow").scale = Vector2(0.3 / (7.0 + 0.1 * xyz[1]), 0.03 / (2.0 + 0.1 * xyz[1]))
 			get_node("Shadow").position = Vector2(0, 3 + Transform.PERSPECTIVE_FACTOR * xyz[1] / size_factor)
 		else:
-			pass
-		
+			var explosion = Explosion.instantiate()
+			get_node("../").add_child(explosion)  # Bind to parent
+			explosion.position = m_arc.final_position()[0]
+			queue_free()
 
 
 func follow_arc(arc):

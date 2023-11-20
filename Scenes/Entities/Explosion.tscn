@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://o8gixblk3vy"]
+
+[ext_resource type="SpriteFrames" uid="uid://v62l04d6o77y" path="res://Effect/Product_hit.tres" id="1_6iqky"]
+[ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_ntuac"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jd4w"]
+radius = 8.0
+height = 26.0
+
+[node name="Explosion" type="Area2D"]
+script = ExtResource("1_ntuac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0jd4w")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_6iqky")
+animation = &"explode"
+frame = 3
+frame_progress = 1.0
