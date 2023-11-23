@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cuwfqeff5wg8t" path="res://Environments/lever_left.png" id="1_4gmcu"]
 [ext_resource type="Script" path="res://Player.gd" id="2_wa028"]
 [ext_resource type="Texture2D" uid="uid://bbyqtul2iolym" path="res://Sprites/dev/dev.png" id="3_ahwai"]
-[ext_resource type="PackedScene" uid="uid://d1i5dsahlb5i7" path="res://Scenes/Entities/Enemy.tscn" id="3_qljuc"]
 [ext_resource type="PackedScene" uid="uid://47fibceb80ku" path="res://Scenes/Entities/Catapult.tscn" id="4_pn48y"]
+[ext_resource type="PackedScene" uid="uid://rqvcu21b4jgn" path="res://Scenes/Entities/EnemySpawner.tscn" id="6_18tdq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_txnyl"]
 radius = 4.0
@@ -120,14 +120,9 @@ texture = ExtResource("1_4gmcu")
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_e78jn")
 
-[node name="Enemy" parent="." instance=ExtResource("3_qljuc")]
-position = Vector2(219, 91)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_qljuc")]
-position = Vector2(219, 67)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_qljuc")]
-position = Vector2(222, 118)
-
 [node name="Catapult" parent="." instance=ExtResource("4_pn48y")]
 position = Vector2(64.3742, 86.3829)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("6_18tdq")]
+position = Vector2(294, 157)
+spawn_cooldown = 1.0
