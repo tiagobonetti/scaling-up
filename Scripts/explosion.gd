@@ -1,23 +1,14 @@
-extends Node
+extends StaticBody2D
+class_name Explosion
 
+@export var damage := 20
 
-@onready var sprite = $AnimatedSprite2D
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	sprite.play("explode")
-	sprite.connect("animation_finished", die)
+	%AnimatedSprite2D.play("explode")
+	%AnimatedSprite2D.connect("animation_finished", Callable(_on_finished))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func die():
+func _on_finished():
 	queue_free()
 
-
-func _on_AnimatedSprite_animation_finished():
-	queue_free()
+func get_damage():
+	return damage

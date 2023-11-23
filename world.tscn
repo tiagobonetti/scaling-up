@@ -109,15 +109,6 @@ libraries = {
 "": SubResource("AnimationLibrary_owx5r")
 }
 
-[node name="Enemy" parent="." instance=ExtResource("3_qljuc")]
-position = Vector2(219, 91)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_qljuc")]
-position = Vector2(219, 67)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_qljuc")]
-position = Vector2(222, 118)
-
 [node name="Lever" type="StaticBody2D" parent="."]
 position = Vector2(94, 51)
 metadata/_edit_group_ = true
@@ -129,5 +120,14 @@ texture = ExtResource("1_4gmcu")
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_e78jn")
 
-[node name="Area2D" parent="." instance=ExtResource("4_pn48y")]
+[node name="Enemy" parent="." instance=ExtResource("3_qljuc")]
+position = Vector2(219, 91)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_qljuc")]
+position = Vector2(219, 67)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_qljuc")]
+position = Vector2(222, 118)
+
+[node name="Catapult" parent="." instance=ExtResource("4_pn48y")]
 position = Vector2(64.3742, 86.3829)

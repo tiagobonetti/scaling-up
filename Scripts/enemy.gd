@@ -4,11 +4,11 @@ class_name Enemy
 @export var health: int = 80
 @export var movement_speed: float = 180
 
-@export var acceleration := 4
-@export var max_speed := 2
-@export var friction := 20
+@export var acceleration := 100
+@export var max_speed := 200
+@export var friction := 2000
 
-@export var target_position := Vector2.ZERO
+@export var target_position := Vector2(150, 100)
 @export var target_distance := 10
 
 var target_delta := Vector2.ZERO:
@@ -18,22 +18,29 @@ func _ready():
 	add_to_group("enemies")
 
 func _physics_process(delta):
-	# remove to stop following mouse
-	target_position = get_global_mouse_position()
-
 	if target_delta.length() >= target_distance:
 		velocity = velocity.move_toward(target_delta.normalized() * max_speed, acceleration * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	
-	move_and_collide(velocity)
+	move_and_slide()
+	detect_damage()
 	animate()
 
 func animate():
 	if velocity.length() > 1:
-		$AnimationPlayer.play("RunRight" if target_delta.x > 0 else "RunLeft")
+		%AnimationPlayer.play("RunRight" if target_delta.x > 0 else "RunLeft")
 	else:
-		$AnimationPlayer.play("Idle")
+		%AnimationPlayer.play("Idle")
+
+func detect_damage():
+	for i in get_slide_collision_count():
+		var collider = get_slide_collision(i).get_collider()
+		if collider.has_method("get_damage"):
+			apply_damage(collider.get_damage())
+
+			# so we only take damage once per source
+			add_collision_exception_with(collider)
 
 func apply_damage(value: int):
 	health -= value
