@@ -1,4 +1,5 @@
 extends Area2D
+class_name Catapult
 
 var Transform = preload("res://Scripts/transform.gd")
 var LaunchArc = preload("res://Scripts/launch_arc.gd")
