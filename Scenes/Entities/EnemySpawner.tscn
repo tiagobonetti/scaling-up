@@ -5,6 +5,7 @@
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_f78n1")
+enemies_total = null
 enemy_scene = ExtResource("2_ymb6u")
 
 [node name="Timer" type="Timer" parent="."]

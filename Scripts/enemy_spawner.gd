@@ -2,8 +2,8 @@
 extends Node2D
 class_name EnemySpawner
 
-@export var spawn_total := 10
-var enemy_spawned := 0
+@export var enemies_total := 10
+var enemies_spawned := 0
 
 @export var spawn_cooldown: float = 1.0 # Seconds
 @export var spawn_radius: float = 20 :
@@ -13,7 +13,8 @@ var enemy_spawned := 0
 
 @export var enemy_scene: PackedScene = load("res://Scenes/Entities/Enemy.tscn")
 
-var enemy_group := "enemies"
+signal spawned(Node)
+signal finished
 
 func _ready():
 	if Engine.is_editor_hint():
@@ -35,9 +36,11 @@ func draw_editor_hint():
 
 func spawn_next():
 	spawn_enemy()
-	enemy_spawned += 1
-	if enemy_spawned < spawn_total:
+	enemies_spawned += 1
+	if enemies_spawned < enemies_total:
 		%Timer.start(spawn_cooldown)
+	else:
+		finished.emit()
 
 func spawn_enemy():
 	var random_distance = randf_range(0, spawn_radius)
@@ -45,7 +48,7 @@ func spawn_enemy():
 
 	var enemy := enemy_scene.instantiate()
 	add_child(enemy)
-	enemy.add_to_group(enemy_group)
 	enemy.global_position = initial_position
+	spawned.emit(enemy)
 	print("Enemy spawned at: ", initial_position)
 	

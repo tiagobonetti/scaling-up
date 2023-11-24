@@ -11,11 +11,12 @@ class_name Enemy
 @export var target_position := Vector2(150, 100)
 @export var target_distance := 10
 
+signal died
+
 var target_delta := Vector2.ZERO:
 	get: return target_position - global_position
 
-func _ready():
-	add_to_group("enemies")
+var damage_sources := []
 
 func _physics_process(delta):
 	if target_delta.length() >= target_distance:
@@ -34,16 +35,21 @@ func animate():
 		%AnimationPlayer.play("Idle")
 
 func detect_damage():
+	if get_slide_collision_count() == 0:
+		return 
+
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
-		if collider.has_method("get_damage"):
-			apply_damage(collider.get_damage())
+		
+		if not collider.has_method("get_damage") or collider in damage_sources:
+			return
 
-			# so we only take damage once per source
-			add_collision_exception_with(collider)
+		apply_damage(collider.get_damage())
+		damage_sources.append(collider)
 
 func apply_damage(value: int):
 	health -= value
 	print("Apply damage value=%d health=%d" % [value, health])
 	if health <= 0:
+		died.emit()
 		queue_free()
