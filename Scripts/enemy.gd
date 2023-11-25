@@ -40,11 +40,11 @@ func detect_damage():
 
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
-		
-		if not collider.has_method("get_damage") or collider in damage_sources:
+		var damage = collider.get("damage")
+		if damage == null or collider in damage_sources:
 			return
 
-		apply_damage(collider.get_damage())
+		apply_damage(damage)
 		damage_sources.append(collider)
 
 func apply_damage(value: int):

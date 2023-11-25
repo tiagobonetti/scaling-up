@@ -5,10 +5,7 @@ class_name Explosion
 
 func _ready():
 	%AnimatedSprite2D.play("explode")
-	%AnimatedSprite2D.connect("animation_finished", Callable(_on_finished))
+	%AnimatedSprite2D.connect("animation_finished", Callable(on_finished))
 
-func _on_finished():
+func on_finished():
 	queue_free()
-
-func get_damage():
-	return damage
