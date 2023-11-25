@@ -1,5 +1,12 @@
 class_name Utils
 
+const PERSPECTIVE_FACTOR = 0.8
+
+static func faux_3d(position_3d: Vector3):
+	var xy = Vector2(position_3d.x, position_3d.y)
+	var z = position_3d.z
+	return xy - Vector2(0, PERSPECTIVE_FACTOR * position_3d.z)
+
 static func rand_direction() -> Vector2:
 	return Vector2.from_angle(randf_range(0, 2 * PI))
 
@@ -13,4 +20,3 @@ static func circle_points(center: Vector2 = Vector2.ZERO, radius: float = 1.0, a
 		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
 
 	return points_arc
-	

@@ -125,4 +125,3 @@ position = Vector2(64.3742, 86.3829)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_18tdq")]
 position = Vector2(294, 157)
-enemies_total = null

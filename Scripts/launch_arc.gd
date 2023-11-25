@@ -47,6 +47,12 @@ func position_at(time):
 		self.v0 * time * sin(self.theta) - 0.5 * self.gravity * time * time,
 	]
 
+func position_3d_at(time):
+	var position_2d = self.start_position - self.v0 * time * cos(self.theta) * self.direction
+	var z = self.v0 * time * sin(self.theta) - 0.5 * self.gravity * time * time
+	return Vector3(position_2d.x, position_2d.y, z)
+
+
 func final_position():
 	return position_at(self.total_time)
 
