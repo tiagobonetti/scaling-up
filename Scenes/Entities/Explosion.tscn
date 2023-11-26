@@ -11,6 +11,7 @@ height = 26.0
 script = ExtResource("1_ntuac")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0jd4w")
 

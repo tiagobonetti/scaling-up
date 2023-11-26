@@ -1,8 +1,19 @@
-extends Area2D
+extends StaticBody2D
+class_name Product
 
 var Explosion := preload("res://Scenes/Entities/Explosion.tscn")
 var m_arc
 var m_time
+
+# Probability to sell on quality
+# Always the same on every hit (provide some kind of floor of efficiency)
+var quality := 0.25
+
+# Probability of sell by recognition
+# This also accumulates on target so sucessive hits will eventually sell an item (>= 100)
+var recognition := 0.1
+
+var sold := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +33,12 @@ func _process(delta):
 		scale = Vector2(size_factor, size_factor)
 		%Shadow.scale = Vector2(0.3 / (7.0 + 0.1 * z), 0.03 / (2.0 + 0.1 * z))
 		%Shadow.position = Vector2(0, 3 + Utils.PERSPECTIVE_FACTOR * z / size_factor)
+		# While the product is in fligth (z is too high) we don't collide
+		var in_fligth = z / 2 > %CollisionShape2D.shape.radius
+		if in_fligth != %CollisionShape2D.disabled:
+			print("toggle", in_fligth)
+			%CollisionShape2D.set_deferred("disabled", in_fligth)
+
 	else:
 		var explosion = Explosion.instantiate()
 		get_parent().add_child(explosion)
@@ -34,6 +51,3 @@ func follow_arc(arc):
 	var position_3d = m_arc.position_3d_at(0)
 	position = Utils.faux_3d(position_3d)
 	%Shadow.position = Vector2(0, 3 + position_3d.z)
-
-func buy():
-	queue_free()

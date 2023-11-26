@@ -5,7 +5,7 @@ class_name EnemySpawner
 @export var enemies_total := 10
 var enemies_spawned := 0
 
-@export var spawn_cooldown: float = 1.0 # Seconds
+@export var spawn_cooldown: float = 3.0 # Seconds
 @export var spawn_radius: float = 20 :
 	set(value):
 		spawn_radius = value

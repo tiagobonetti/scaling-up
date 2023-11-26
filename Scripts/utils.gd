@@ -20,3 +20,18 @@ static func circle_points(center: Vector2 = Vector2.ZERO, radius: float = 1.0, a
 		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
 
 	return points_arc
+
+static func get_or(object: Object, property: StringName, default):
+	var value = object.get(property)
+	return default if value == null else value
+
+# Roll functions support nullable probability
+static func roll_succeded(probability):
+	if probability <= 0.0:
+		return false
+	if probability > 1.0:
+		return true
+	return probability > randf()
+
+static func roll_failed(probability):
+	return not roll_succeded(probability)
