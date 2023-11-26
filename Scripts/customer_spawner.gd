@@ -1,9 +1,9 @@
 @tool
 extends Node2D
-class_name EnemySpawner
+class_name CustomerSpawner
 
-@export var enemies_total := 10
-var enemies_spawned := 0
+@export var spawned_max := 10
+var spawned_count := 0
 
 @export var spawn_cooldown: float = 3.0 # Seconds
 @export var spawn_radius: float = 20 :
@@ -11,7 +11,7 @@ var enemies_spawned := 0
 		spawn_radius = value
 		queue_redraw()
 
-@export var enemy_scene: PackedScene = load("res://Scenes/Entities/Enemy.tscn")
+@export var customer_scene: PackedScene = load("res://Scenes/Entities/Customer.tscn")
 
 signal spawned(Node)
 signal finished
@@ -35,20 +35,19 @@ func draw_editor_hint():
 	draw_polygon(points_arc, colors)	
 
 func spawn_next():
-	spawn_enemy()
-	enemies_spawned += 1
-	if enemies_spawned < enemies_total:
+	spawn_customer()
+	spawned_count += 1
+	if spawned_count < spawned_max:
 		%Timer.start(spawn_cooldown)
 	else:
 		finished.emit()
 
-func spawn_enemy():
+func spawn_customer():
 	var random_distance = randf_range(0, spawn_radius)
 	var initial_position = global_position + Utils.rand_direction() * random_distance
-
-	var enemy := enemy_scene.instantiate()
-	add_child(enemy)
-	enemy.global_position = initial_position
-	spawned.emit(enemy)
-	print("Enemy spawned at: ", initial_position)
+	var customer := customer_scene.instantiate()
+	add_child(customer)
+	customer.global_position = initial_position
+	spawned.emit(customer)
+	print("Customer spawned at: ", initial_position)
 	

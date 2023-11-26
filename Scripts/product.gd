@@ -36,7 +36,6 @@ func _process(delta):
 		# While the product is in fligth (z is too high) we don't collide
 		var in_fligth = z / 2 > %CollisionShape2D.shape.radius
 		if in_fligth != %CollisionShape2D.disabled:
-			print("toggle", in_fligth)
 			%CollisionShape2D.set_deferred("disabled", in_fligth)
 
 	else:

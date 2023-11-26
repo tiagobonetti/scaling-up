@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://k5u4hsit7bwf"]
+
+[ext_resource type="Script" path="res://Scripts/customer_spawner.gd" id="1_qr8tb"]
+
+[node name="CustomerSpawner" type="Node2D"]
+script = ExtResource("1_qr8tb")
+spawned_max = null
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true

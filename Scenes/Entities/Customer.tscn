@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1i5dsahlb5i7"]
+[gd_scene load_steps=9 format=3 uid="uid://r7y2r8xqkn0p"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mmkan"]
-[ext_resource type="Texture2D" uid="uid://bbyqtul2iolym" path="res://Sprites/dev/dev.png" id="2_p6rqy"]
+[ext_resource type="Script" path="res://Scripts/customer.gd" id="1_37qxj"]
+[ext_resource type="Texture2D" uid="uid://bbyqtul2iolym" path="res://Sprites/dev/dev.png" id="2_aco52"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_txnyl"]
 radius = 4.0
@@ -81,13 +81,13 @@ _data = {
 "RunRight": SubResource("Animation_lyp70")
 }
 
-[node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_mmkan")
+[node name="Customer" type="CharacterBody2D"]
+script = ExtResource("1_37qxj")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
-texture = ExtResource("2_p6rqy")
+texture = ExtResource("2_aco52")
 hframes = 13
 frame = 5
 
@@ -100,3 +100,6 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_owx5r")
 }
+
+[node name="HappyTimer" type="Timer" parent="."]
+unique_name_in_owner = true
