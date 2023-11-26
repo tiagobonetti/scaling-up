@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://r7y2r8xqkn0p"]
 
 [ext_resource type="Script" path="res://Scripts/customer.gd" id="1_37qxj"]
-[ext_resource type="Texture2D" uid="uid://bbyqtul2iolym" path="res://Sprites/dev/dev.png" id="2_aco52"]
+[ext_resource type="Texture2D" uid="uid://b5rqmuseajgkr" path="res://Sprites/dev.png" id="2_h8gk0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_txnyl"]
 radius = 4.0
@@ -87,7 +87,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
-texture = ExtResource("2_aco52")
+texture = ExtResource("2_h8gk0")
 hframes = 13
 frame = 5
 

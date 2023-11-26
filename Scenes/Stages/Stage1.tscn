@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj6wrvnc2nqjs"]
+[gd_scene load_steps=4 format=3 uid="uid://bj6wrvnc2nqjs"]
 
 [ext_resource type="Script" path="res://Scripts/stage.gd" id="1_rgm66"]
 [ext_resource type="PackedScene" uid="uid://47fibceb80ku" path="res://Scenes/Entities/Catapult.tscn" id="3_1i58h"]
 [ext_resource type="PackedScene" uid="uid://k5u4hsit7bwf" path="res://Scenes/Entities/CustomerSpawner.tscn" id="3_qgbpd"]
-[ext_resource type="PackedScene" uid="uid://r7y2r8xqkn0p" path="res://Scenes/Entities/Customer.tscn" id="3_x7o1s"]
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_rgm66")
@@ -34,10 +33,6 @@ horizontal_alignment = 1
 
 [node name="CustomerSpawner" parent="." instance=ExtResource("3_qgbpd")]
 position = Vector2(267, 44)
-spawned_max = 10
-customer_scene = ExtResource("3_x7o1s")
 
 [node name="CustomerSpawner2" parent="." instance=ExtResource("3_qgbpd")]
 position = Vector2(268, 139)
-spawned_max = 10
-customer_scene = ExtResource("3_x7o1s")
