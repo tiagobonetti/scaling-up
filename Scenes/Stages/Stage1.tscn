@@ -7,7 +7,13 @@
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_rgm66")
 
-[node name="Area2D" parent="." instance=ExtResource("3_1i58h")]
+[node name="CustomerSpawner" parent="." instance=ExtResource("3_qgbpd")]
+position = Vector2(267, 44)
+
+[node name="CustomerSpawner2" parent="." instance=ExtResource("3_qgbpd")]
+position = Vector2(268, 139)
+
+[node name="Catapult" parent="." instance=ExtResource("3_1i58h")]
 position = Vector2(78, 96)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -17,7 +23,6 @@ unique_name_in_owner = true
 offset_top = 4.0
 offset_right = 320.0
 offset_bottom = 30.0
-text = "Time: 0:23.4  Sold: 99 Killed: 99"
 horizontal_alignment = 1
 
 [node name="CenterLabel" type="Label" parent="CanvasLayer"]
@@ -25,14 +30,4 @@ unique_name_in_owner = true
 offset_top = 95.0
 offset_right = 320.0
 offset_bottom = 181.0
-text = "You have captured the market!
-Time for a price hike!
-You killed too many customers!
- Time for a  fine and cushy retirement!\""
 horizontal_alignment = 1
-
-[node name="CustomerSpawner" parent="." instance=ExtResource("3_qgbpd")]
-position = Vector2(267, 44)
-
-[node name="CustomerSpawner2" parent="." instance=ExtResource("3_qgbpd")]
-position = Vector2(268, 139)
