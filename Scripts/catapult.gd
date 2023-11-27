@@ -13,9 +13,6 @@ var redraw = false
 var debug_drawing = true
 
 
-@onready var sprite = $AnimatedSprite2D
-
-
 func from_screen_coordinates(x):
 	return global_transform.affine_inverse() * x
 
@@ -62,7 +59,7 @@ func _draw():
 
 func _begin_drag(viewport, event, _shape_idx):
 	if event.is_action_pressed("ui_press"):
-		sprite.play("load")
+		%AnimatedSprite2D.play("load")
 		viewport.set_input_as_handled()
 		start_position = from_screen_coordinates(event.position)
 		current_position = from_screen_coordinates(event.position)
@@ -78,7 +75,7 @@ func _input(event):
 		is_dragging = false
 		redraw = debug_drawing
 		
-		sprite.play("fire")
+		%AnimatedSprite2D.play("fire")
 		
 		var launched_product = Product.instantiate()
 		add_child(launched_product)
@@ -87,4 +84,5 @@ func _input(event):
 
 	if is_dragging and event is InputEventMouseMotion:
 		current_position = current_position + 10 * event.relative
+		%AnimatedSprite2D.flip_h = global_position.x - event.position.x < 0
 		redraw = debug_drawing

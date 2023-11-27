@@ -13,8 +13,14 @@ script = ExtResource("1_cfnwn")
 shape = SubResource("RectangleShape2D_k56c4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 sprite_frames = ExtResource("2_jhdia")
 animation = &"idle"
 offset = Vector2(2.08165e-12, -18)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-24, -6, 24, -6, 24, 6, -24, 6)
 
 [connection signal="input_event" from="." to="." method="_begin_drag"]

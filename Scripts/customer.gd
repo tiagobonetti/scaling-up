@@ -10,45 +10,56 @@ class_name Customer
 @export var collision_nudge := 500
 @export var target_max_distance := 20
 
+@export var happy_cooldown_s := 10.0
+@export var search_cooldown_s := 10.0
+
 signal died
 signal bought
 
-var product_position :=  Vector2(200 , 100) + Utils.rand_direction() * 20
 var product_recognition := 0.0
-
-@export var happy_cooldown_s := 10.0
-var happy_position := Vector2.ZERO
-var happy:
-	get:
-		return !%HappyTimer.is_stopped()
-
 var damage_sources := []
 
 func start_happy():
-	product_recognition = 0.0
-	happy_position = position + Utils.rand_direction() * 1024
-	%HappyTimer.start(happy_cooldown_s)
+	%NavigationAgent2D.set_target_position(position + Utils.rand_direction() * 1024)
+	schedule_next_search(happy_cooldown_s)
+
+func start_search():
+	print("start search")
+	schedule_next_search(search_cooldown_s)
+	for i in 100:
+		var rand_x = randf_range(10, 310)
+		var rand_y = randf_range(10, 182)
+		%NavigationAgent2D.set_target_position(Vector2(rand_x, rand_y))
+		if %NavigationAgent2D.is_target_reachable():
+			break
+
+func schedule_next_search(time_s: float):
+	%SearchTimer.start(time_s + randf_range(-1, 1))
 
 func _ready():
-	%HappyTimer.one_shot = true
+	%SearchTimer.one_shot = true
+	%SearchTimer.timeout.connect(Callable(start_search))
+	%NavigationAgent2D.path_postprocessing = NavigationPathQueryParameters2D.PATH_POSTPROCESSING_EDGECENTERED
+	start_search()
 
 func _physics_process(delta):
-	var target_position := happy_position if happy else product_position
-	var target_delta = target_position - global_position
-	chase(delta, target_delta, target_max_distance)
+	chase(delta)
 	move_and_slide()
 	handle_collision(delta)
-	handle_animation(target_delta)
+	handle_animation()
 
-func chase(delta, target_delta, max_distance):
-	if target_delta.length() >= max_distance:
-		velocity = velocity.move_toward(target_delta.normalized() * max_speed, acceleration * delta)
-	else:
+func chase(delta):
+	if %NavigationAgent2D.is_navigation_finished():
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		return
+	
+	var direction = (%NavigationAgent2D.get_next_path_position() - global_position).normalized()
+	velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
 
-func handle_animation(target_delta):
+func handle_animation():
 	if velocity.length() > 1:
-		%AnimationPlayer.play("RunRight" if target_delta.x > 0 else "RunLeft")
+		var dx = %NavigationAgent2D.get_next_path_position().x - global_position.x
+		%AnimationPlayer.play("RunRight" if dx > 0 else "RunLeft")
 	else:
 		%AnimationPlayer.play("Idle")
 

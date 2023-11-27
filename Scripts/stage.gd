@@ -1,7 +1,8 @@
 extends Node2D
 class_name Stage
 
-var total_time_s := 0.0
+@export var max_customers := 20
+var customers_spawned := 0
 
 var customer_died := 0
 var customer_died_max := 10
@@ -20,11 +21,19 @@ var succeded:
 var finished:
 	get:
 		return succeded or failed
-	
+
+var total_time_s := 0.0
+
+@onready var spawners := find_children("", "CustomerSpawner")
+
 func _ready():
 	%CenterLabel.visible = false
-	for spawner in find_children("", "CustomerSpawner"):
-		spawner.spawned.connect(Callable(on_spawned))
+	print("spawners ", spawners.size())
+	for s in spawners:
+		print("Spawner:", s.name)
+		s.spawned.connect(Callable(on_spawned))
+		s.schedule_next_spawn()
+
 
 func _process(delta):
 	if finished:
@@ -46,8 +55,13 @@ func update_top_label():
 		%CenterLabel.visible = true
 
 func on_spawned(customer: Customer):
+	customers_spawned += 1
 	customer.died.connect(Callable(on_died))
 	customer.bought.connect(Callable(on_bought))
+	if customers_spawned >= max_customers:
+		print("Stop")
+		for s in spawners:
+			s.stop()
 
 func on_died():
 	customer_died += 1

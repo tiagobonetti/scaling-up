@@ -101,5 +101,8 @@ libraries = {
 "": SubResource("AnimationLibrary_owx5r")
 }
 
-[node name="HappyTimer" type="Timer" parent="."]
+[node name="SearchTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
